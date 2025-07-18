@@ -47,4 +47,9 @@ contract ZKResume {
         Resume memory resume = resumes[_user];
         return (resume.ipfsHash, resume.zkProofHash, resume.verified);
     }
+
+    // ✅ New function: Check if a resume is verified
+    function isVerified(address _user) external view returns (bool) {
+        return resumes[_user].verified;
+    }
 }
