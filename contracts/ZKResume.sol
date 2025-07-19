@@ -15,6 +15,7 @@ contract ZKResume {
 
     event ResumeSubmitted(address indexed user, string ipfsHash, bytes32 zkProofHash);
     event ResumeVerified(address indexed user);
+    event ResumeDeleted(address indexed user);
 
     modifier onlyOwner() {
         require(msg.sender == owner, "Only owner can verify resumes");
@@ -48,8 +49,15 @@ contract ZKResume {
         return (resume.ipfsHash, resume.zkProofHash, resume.verified);
     }
 
-    // ✅ New function: Check if a resume is verified
+    // ✅ Check if a resume is verified
     function isVerified(address _user) external view returns (bool) {
         return resumes[_user].verified;
+    }
+
+    // ✅ New: Delete resume
+    function deleteResume() external {
+        require(resumes[msg.sender].user != address(0), "Resume does not exist");
+        delete resumes[msg.sender];
+        emit ResumeDeleted(msg.sender);
     }
 }
