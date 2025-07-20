@@ -49,15 +49,12 @@ contract ZKResume {
         return (resume.ipfsHash, resume.zkProofHash, resume.verified);
     }
 
-    // ✅ Check if a resume is verified
-    function isVerified(address _user) external view returns (bool) {
-        return resumes[_user].verified;
-    }
+    // Deleted: isVerified function
 
-    // ✅ New: Delete resume
     function deleteResume() external {
         require(resumes[msg.sender].user != address(0), "Resume does not exist");
         delete resumes[msg.sender];
         emit ResumeDeleted(msg.sender);
     }
 }
+
