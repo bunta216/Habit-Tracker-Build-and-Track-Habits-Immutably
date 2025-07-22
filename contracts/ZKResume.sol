@@ -44,14 +44,14 @@ contract ZKResume {
         emit ResumeVerified(_user);
     }
 
-    function get_Resume(address _user) external view returns (string memory, bytes32, bool) {
+    function getResume(address _user) external view returns (string memory, bytes32, bool) {
         Resume memory resume = resumes[_user];
         return (resume.ipfsHash, resume.zkProofHash, resume.verified);
     }
 
     // Deleted: isVerified function
 
-    function delete_Resume() external {
+    function deleteResume() external {
         require(resumes[msg.sender].user != address(0), "Resume does not exist");
         delete resumes[msg.sender];
         emit ResumeDeleted(msg.sender);
