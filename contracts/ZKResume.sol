@@ -48,7 +48,7 @@ contract ZKResume {
         return (resume.ipfsHash, resume.zkProofHash, resume.verified);
     }
 
-    // Deleted: isVerified function
+
 
     function deleteResume() external {
         require(resumes[msg.sender].user != address(0), "Resume does not exist");
