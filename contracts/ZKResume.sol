@@ -6,7 +6,7 @@ contract ZKResume {
     struct Resume {
         address user;
         string ipfsHash; // Encrypted resume stored off-chain (e.g., on IPFS)
-        bytes32 zkProofHash; // Hash of the ZK proof
+        bytes32 zkProofHash; 
         bool verified;
     }
 
