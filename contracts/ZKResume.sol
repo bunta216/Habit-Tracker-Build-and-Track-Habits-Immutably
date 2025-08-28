@@ -6,7 +6,7 @@ contract ZKResume {
     struct Resume {
         address user;
         string ipfsHash; 
-        bytes32 zkProofHash; // deletes
+        bytes32 zkProofHash; // delete
         bool verified;
     }
 
